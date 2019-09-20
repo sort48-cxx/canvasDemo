@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Page Title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<canvas id="drawing" width="1000" height="1100">
+		您的浏览器不支持Canvas
+	</canvas>
+</body>
+<script>
+	var drawing = document.getElementById("drawing");
+
+	if (drawing.getContext) {
+		var ctx = drawing.getContext("2d");
+		var img = new Image();
+		img.src = "https://b-gold-cdn.xitu.io/v3/static/img/logo.a7995ad.svg";
+		img.onload = function () {
+			var ptrn = ctx.createPattern(img, 'repeat');
+			ctx.fillStyle = ptrn;
+			ctx.fillRect(0, 0, 102, 150);
+		}
+
+	}
+</script>
+
+
+
+</html>

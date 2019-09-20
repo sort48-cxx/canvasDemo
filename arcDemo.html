@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Page Title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+	* {
+		padding: 0;
+		margin: 0
+	}
+</style>
+
+<body>
+	<canvas id="drawing" width="1000" height="1100">
+		您的浏览器不支持Canvas
+	</canvas>
+</body>
+<script>
+	var drawing = document.getElementById("drawing");
+	if (drawing.getContext) {
+		var ctx = drawing.getContext("2d");
+
+		// arc
+		ctx.beginPath();
+		ctx.arc(150, 70, 50, 0, 2 * Math.PI, false);
+		ctx.stroke();
+		ctx.closePath();
+
+		// arcTo
+		ctx.beginPath();
+		ctx.moveTo(250, 20);
+		ctx.arcTo(250, 50, 350, 80, 50);
+		ctx.stroke();
+
+	
+	}
+</script>
+
+</html>

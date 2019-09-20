@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Page Title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<canvas id="drawing" width="1000" height="1100">
+		您的浏览器不支持Canvas
+	</canvas>
+</body>
+<script>
+	var drawing = document.getElementById("drawing");
+	if (drawing.getContext) {
+		var ctx = drawing.getContext("2d");
+		//设置阴影
+		ctx.shadowOffsetX = 5;
+		ctx.shadowOffsetY = 5;
+		ctx.shadowBlur = 4;
+		ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
+
+		ctx.fillStyle = "#ff0000";
+		ctx.fillRect(10, 10, 50, 50);
+	}
+</script>
+
+</html>
