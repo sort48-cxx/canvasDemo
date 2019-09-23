@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Page Title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+	* {
+		padding: 0;
+		margin: 0
+	}
+</style>
+
+<body>
+	<canvas id="drawing" width="1000" height="1100">
+		您的浏览器不支持Canvas
+	</canvas>
+</body>
+<script>
+
+	var drawing = document.getElementById("drawing");
+
+	if (drawing.getContext) {
+		var ctx = drawing.getContext("2d");
+
+		//边框
+		ctx.beginPath();
+		ctx.strokeRect(450, 150, 150, 150);
+		ctx.stroke();
+		ctx.closePath();
+
+		//圆心
+		ctx.beginPath();
+		ctx.arc(525, 225, 2, 0, 2 * Math.PI, false);
+		ctx.fill();
+		ctx.closePath();
+
+
+		ctx.beginPath();
+		//时针
+		ctx.moveTo(525, 225);
+		ctx.lineTo(525, 200);
+		//分针
+		ctx.moveTo(525, 225);
+		ctx.lineTo(560, 225);
+
+		//秒针
+		ctx.moveTo(525, 225);
+		ctx.lineTo(545, 185);
+
+		ctx.font = "24px serif";
+		// 12 / 0
+		ctx.moveTo(525, 150);
+		ctx.lineTo(525, 160);
+		ctx.fillText("12", 515, 180);
+
+		// 6
+		ctx.moveTo(525, 300);
+		ctx.lineTo(525, 290);
+		ctx.fillText("6", 520, 280);
+
+		// 3
+		ctx.moveTo(600, 225);
+		ctx.lineTo(590, 225);
+		ctx.fillText("3", 575, 235);
+
+		// 9
+		ctx.moveTo(450, 225);
+		ctx.lineTo(460, 225);
+		ctx.fillText("9", 465, 235);
+
+		// 1
+		ctx.moveTo(572, 150);
+		ctx.lineTo(567, 160);
+		ctx.fillText("1", 557, 180);
+
+		// 2
+		ctx.moveTo(600, 182);
+		ctx.lineTo(590, 187);
+		ctx.fillText("2", 575, 200);
+
+		// 4
+		ctx.moveTo(600, 267);
+		ctx.lineTo(590, 262);
+		ctx.fillText("4", 575, 272);
+
+		// 5
+		ctx.moveTo(572, 300);
+		ctx.lineTo(567, 290);
+		ctx.fillText("5", 552, 280);
+
+		// 7
+		ctx.moveTo(477, 300);
+		ctx.lineTo(482, 290);
+		ctx.fillText("7", 487, 280);
+
+		// 8
+		ctx.moveTo(450, 267);
+		ctx.lineTo(460, 262);
+		ctx.fillText("8", 465, 267);
+
+		// 10
+		ctx.moveTo(450, 182);
+		ctx.lineTo(460, 187);
+		ctx.fillText("10", 465, 200);
+
+		// 11
+		ctx.moveTo(477, 150);
+		ctx.lineTo(482, 160);
+		ctx.fillText("11", 482, 180);
+
+		ctx.stroke();
+		ctx.beginPath();
+	}
+
+</script>
+
+
+
+</html>
