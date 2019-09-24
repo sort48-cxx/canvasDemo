@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Page Title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+	* {
+		padding: 0;
+		margin: 0
+	}
+
+	.d1 {
+		margin: 0 350px
+	}
+
+	.d1 input {
+		width: 200px;
+	}
+</style>
+
+<body>
+	<canvas id="drawing" width="800" height="400">
+		您的浏览器不支持Canvas
+	</canvas>
+
+	<div class="d1">
+		<input type="range" id="rangeInput" min="0" max="100" value="15" />
+	</div>
+</body>
+<script>
+
+	var drawing = document.getElementById("drawing");
+	var rangeInput = document.getElementById("rangeInput"); //获取滑动条对象
+	rangeInput.onchange = function () { //监听滑动条
+		update(rangeInput.value);
+	};
+	update(rangeInput.value); //初始化
+	function update(rV) {
+		if (drawing.getContext) {
+			var ctx = drawing.getContext("2d");
+			ctx.font = "48px serif";
+			ctx.clearRect(600, 340, 100, 300);
+			ctx.fillStyle = "#000";
+			ctx.fillText(rV + "%", 600, 380); //同步修改滑动条的值
+
+			//最外层的圆弧
+			ctx.beginPath();
+			ctx.fillStyle = "#E1E1E1";
+			ctx.arc(450, 200, 150, 0, 2 * Math.PI);
+			ctx.fill();
+			ctx.closePath();
+
+			//内层的圆弧
+			ctx.beginPath();
+			ctx.fillStyle = "#E6E6E6";
+			ctx.arc(450, 200, 130, 0, 2 * Math.PI);
+			ctx.fill();
+			ctx.closePath();
+
+			//白色的圆弧
+			ctx.beginPath();
+			ctx.fillStyle = "#ffffff";
+			ctx.arc(450, 200, 110, 0, 2 * Math.PI);
+			ctx.fill();
+			ctx.closePath();
+
+			//根据获取滑动条的值换算对应的弧度的值
+			var tmp = Math.PI / 2;
+			var startA = 0 - tmp;
+			var endA = ((rV / 100) * 2) * Math.PI - tmp;
+
+			//选中的圆
+			ctx.beginPath();
+			ctx.lineWidth = 20;
+			ctx.strokeStyle = "#00B4FF";
+			ctx.arc(450, 200, 120, startA, endA, false);
+			ctx.stroke();
+			ctx.closePath();
+		}
+	}
+</script>
+
+</html>
