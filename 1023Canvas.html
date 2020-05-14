@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+	<canvas id="drawing" width="1000" height="1000">
+		您的浏览器不支持Canvas
+	</canvas>
+</body>
+<script>
+	var drawing = document.getElementById("drawing");
+
+	if (drawing.getContext) {
+		var ctx = drawing.getContext("2d");
+
+		// for (var i = 1; i <= 9; i++) {
+		// 	/*文字*/
+		// 	ctx.fillText(i, 40, 40 * i);
+		// 	/*横线*/
+		// 	ctx.beginPath();
+		// 	ctx.moveTo(60, 40 * i - 3);
+		// 	ctx.lineTo(472, 40 * i - 3);
+		// 	ctx.stroke();
+		// 	ctx.closePath();
+		// }
+		// /*竖线*/
+		// for (var i = 1; i <= 8; i++) {
+		// 	ctx.beginPath();
+		// 	ctx.moveTo(59*i, 37);
+		// 	ctx.lineTo(59*i, 357);
+		// 	ctx.stroke();
+		// 	ctx.closePath();
+		// }
+		// /*下标文字*/
+		// for (var i = 1; i <= 7; i++) {
+		// 	ctx.fillText(i, 59*i+30, 385);
+		// }
+		// var data=[3,5,1,8,6,4,2]
+		// /*填充颜色*/
+		// ctx.fillStyle="#9AD0F5";
+		// for(var i=1;i<=data.length;i++){
+		// 	ctx.fillRect(60*i+12,(8-data[i-1]+1)*40-4, 30, 40*data[i-1]);
+		// }
+
+		var data = [{
+            "value": .2,
+            "color": "red",
+            "title": "大专"
+        },{
+            "value": .4,
+            "color": "blue",
+            "title": "本科"
+        },{
+            "value": .3,
+            "color": "green",
+            "title": "硕士"
+        },{
+            "value": .1,
+            "color": "pink",
+            "title": "博士"
+        }];
+
+		var tmp=-90;
+		var x0=300;
+		var y0=300;
+		var r=50;
+
+
+		for (var i=0;i<data.length;i++){
+			ctx.beginPath();
+			ctx.moveTo(x0,y0);
+			var m=data[i].value*360;
+			var startAng=tmp*Math.PI/180;
+			var endAng=(tmp+m)*Math.PI/180;
+			ctx.arc(x0, y0, r,startAng, endAng);
+			ctx.stroke();
+            //填充扇形
+            ctx.fillStyle = data[i].color;
+            ctx.fill();
+			tmp += m;
+		}
+	}
+</script>
+
+</html>
